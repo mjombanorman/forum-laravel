@@ -36,7 +36,7 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        &nbsp;
+                        <li><a href="{{route('forum')}}">Home</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -70,34 +70,39 @@
                 </div>
             </div>
         </nav>
-
-      
+    
     </div>
     <div class="container">
 
         <div class="col-md-4">
-        <div class="panel panel-success">
+        <a href="{{route('discussion.create')}}" class="form-control btn btn-primary">
+        Create a New Discussion
+        </a>
+        <div class="panel panel-default">
         <div class="panel-heading">
-        Channels
+            <ul class="list-group">
+                <li class="list-group-item"><a href="{{route('forum')}}">Home</a></li>
+            </ul>
         </div>
         <div class="panel-body">
 
         <ul class="list-group">
         @foreach($channels as $channel)
-            <li class="list-group-item">{{$channel->title}}</li>
+        <li class="list-group-item"><a href="{{route('channel',['id'=>$channel->id])}}">{{$channel->title}}</a></li>
             @endforeach
         </ul>
 
         </div>
         </div>
         </div>
+       
 
         <div class="col-md-8">
         @yield('content')
         </div>
         </div>
 
-    </div>
+    
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
