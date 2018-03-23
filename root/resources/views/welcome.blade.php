@@ -40,6 +40,9 @@
                 right: 10px;
                 top: 18px;
             }
+            .social-auth{
+                width: 50px; height: 50px;
+            }
 
             .content {
                 text-align: center;
@@ -48,7 +51,7 @@
             .title {
                 font-size: 84px;
             }
-
+            .logo{ max-width: 300px; max-height: 300px;}
             .links > a {
                 color: #636b6f;
                 padding: 0 25px;
@@ -79,14 +82,12 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    <a href="{{route('forum')}}">The Forum</a>
+                    <a href="{{route('forum')}}"><img src="{{asset('assets/img/logo.png')}}" class="logo"></a>
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Github</a>
-                    <a href="https://laracasts.com">Bitbucket</a>
-                    <a href="https://laravel-news.com">Facebook</a>
-                    </div>
+                    <a href="{{route('social.auth',['provider'=>'github'])}}"><img src="{{asset('assets/img/github.png')}}" class="social-auth"></a>
+                                        </div>
             </div>
         </div>
     </body>

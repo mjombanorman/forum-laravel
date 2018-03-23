@@ -12,6 +12,10 @@ class ChannelsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct() {
+        $this->middleware('admin');
+    }
+    
     public function index()
     {
     return view('channels.index')->with('channels',Channel::all());
@@ -39,7 +43,8 @@ class ChannelsController extends Controller
             'channel'=>'required'
         ]);
         Channel::create([
-            'title'=>$request->channel
+            'title'=>$request->channel,
+                'slug'=> str_slug($request->channel)
         ]);
         Session::flash('success','Channel Created');
         return redirect()->route('channels.index');
@@ -81,6 +86,7 @@ class ChannelsController extends Controller
         $channel = Channel::find($id);
 
         $channel->title = $request->channel;
+         $channel->slug =  str_slug($request->channel);
         $channel->save();
         Session::flash('success','Channel Updated');
         return redirect()->route('channels.index');

@@ -11,6 +11,13 @@
 |
 */
 
+Route::get('{provider}/auth',
+[ 'uses'=>'SocialController@auth',
+            'as'=>'social.auth']
+);
+Route::get('/{provider}/redirect',['uses'=>'SocialController@authCallback','as'=>'social.callback']);
+
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -19,20 +26,32 @@ Route::get('/discuss', function () {
     return view('discuss');
 });
 
+
 Auth::routes();
 
 Route::get('/forum',
         [ 'uses'=>'ForumsController@index',
             'as'=>'forum']);
+
+
+Route::get('/all-channels',[
+    'uses'=>'ChannelsController@index',
+    'as'=>'all.channels'
+]); 
+
+
+
 Route::get('/discussion/{slug}',[
     'uses'=>'DiscussionsController@show',
     'as'=>'discussion.show'
 ]);
 
-Route::get('/channel/{id}',[
+Route::get('/channel/{slug}',[
     'uses'=>'ForumsController@channel',
     'as'=>'channel'
 ]); 
+
+
 
 Route::group(['middleware'=>'auth'], function(){
 
@@ -64,4 +83,38 @@ Route::resource('channels','ChannelsController');
          'uses'=>'RepliesController@unlike',
          'as'=>'reply.unlike'
      ]);
+      
+       Route::get('/discussion/watch/{id}',[
+     'uses'=>'WatchersController@watch',
+       'as'=>'discussion.watch'
+    ]);
+        Route::get('/discussion/unwatch/{id}',[
+     'uses'=>'WatchersController@unwatch',
+       'as'=>'discussion.unwatch'
+    ]);
+        
+           Route::get('/reply/best/{id}',[
+     'uses'=>'RepliesController@best_answer',
+       'as'=>'reply.best.answer'
+    ]);
+              Route::get('/reply/edit/{slug}',[
+     'uses'=>'RepliesController@edit',
+       'as'=>'reply.edit'
+    ]);   
+           
+                   Route::post('/reply/update/{id}',[
+     'uses'=>'RepliesController@update',
+       'as'=>'reply.update'
+    ]); 
+           
+           Route::get('/discussion/edit/{slug}',[
+     'uses'=>'DiscussionsController@edit',
+       'as'=>'discussion.edit'
+    ]);   
+           
+                   Route::post('/discussion/update/{id}',[
+     'uses'=>'DiscussionsController@update',
+       'as'=>'discussion.update'
+    ]); 
+           
 });

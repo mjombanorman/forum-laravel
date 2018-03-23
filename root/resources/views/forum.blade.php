@@ -6,7 +6,14 @@
                 <div class="panel-heading">
                     <img src="{{$d->user->avatar}}" alt="" width="40px" height="40px">&nbsp;&nbsp;
                     <span>{{$d->user->name}},<b>{{$d->created_at->diffForHumans()}}</b></span>
-                    <a href="{{route('discussion.show',['slug'=>$d->slug])}}"class="btn btn-default pull-right">view</a>
+                    <a href="{{route('discussion.show',['slug'=>$d->slug])}}"class="btn btn-default btn-xs pull-right"> view</a>
+                    
+                    @if($d->hasBestAnswer())
+                    <span class="btn btn-danger btn-xs pull-right">closed</span>
+                    @else
+                       <span class="btn btn-success btn-xs pull-right">open</span>
+                       @endif
+                    
                 </div>
 
                 <div class="panel-body">

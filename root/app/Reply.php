@@ -7,7 +7,7 @@ use Auth;
 
 class Reply extends Model
 {
- protected $fillable = ['content','user_id','discussion_id'];
+ protected $fillable = ['content','user_id','discussion_id','best_answer'];
 
  public function discussion()
  {

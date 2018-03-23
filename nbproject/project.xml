@@ -5,5 +5,13 @@
         <data xmlns="http://www.netbeans.org/ns/php-project/1">
             <name>Forum</name>
         </data>
+        <spellchecker-wordlist xmlns="http://www.netbeans.org/ns/spellchecker-wordlist/1">
+            <word>app</word>
+            <word>endforeach</word>
+            <word>endsection</word>
+            <word>foreach</word>
+            <word>hasBestAnswer</word>
+            <word>Unwatch</word>
+        </spellchecker-wordlist>
     </configuration>
 </project>

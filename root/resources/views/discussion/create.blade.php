@@ -9,7 +9,7 @@
             {{csrf_field()}}
 
             <div class="form-group"><label for="title">Title</label>
-                <input type="text" name="title" class="form-control">
+                <input type="text" name="title" value="{{old('title')}}"class="form-control">
             </div>
 
             <div class="form-group">
@@ -20,16 +20,17 @@
                     @endforeach
                 </select>
             </div>
-    </div>
+    
     <div class="form-group">
         <label for="content">Ask a question</label>
-        <textarea name="content" id="content" cols="30" rows="10"></textarea>
+        <textarea name="content" id="content" cols="28" class="form-control" rows="10">{{old('name')}}</textarea>
     </div>
 
     <div class="form-group">
-        <button class="btn btn-success pull-right" type="submit">Create a Discusion</button>
+        <button class="btn btn-success pull-right" type="submit"><i class="fa fa-send"></i>Create a Discusion</button>
     </div>
-</div>
-</form>
 
+</form>
+</div>
+</div>
 @endsection

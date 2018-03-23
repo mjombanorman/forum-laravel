@@ -32,5 +32,8 @@ class User extends Authenticatable
       return $this->hasMany('App\Discussion');
     }
     
+    public function points() {
+        return $this->hasOne('App\UserPoints');
+    }
     
 } 
