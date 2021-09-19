@@ -163,7 +163,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        AdamWathan\EloquentOAuthL5\EloquentOAuthServiceProvider::class,
+    //    AdamWathan\EloquentOAuthL5\EloquentOAuthServiceProvider::class,
 
         /*
          * Package Service Providers...

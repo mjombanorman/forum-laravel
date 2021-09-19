@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Support\Str;
 return [
 
     /*
@@ -82,13 +82,13 @@ return [
     |
     | When utilizing a RAM based store such as APC or Memcached, there might
     | be other applications utilizing the same cache. So, we'll specify a
-    | value to get prefixed to all our keys so we can avoid collisions.
+    | value to get prefixed to all our keys so swe can avoid collisions.
     |
     */
 
     'prefix' => env(
         'CACHE_PREFIX',
-        str_slug(env('APP_NAME', 'laravel'), '_').'_cache'
+        Str::slug(env('APP_NAME', 'laravel'), '_').'_cache'
     ),
 
 ];

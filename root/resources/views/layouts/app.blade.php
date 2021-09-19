@@ -41,7 +41,7 @@
                         <!-- Left Side Of Navbar -->
                         <ul class="nav navbar-nav">
                             <li><a href="{{route('forum')}}">Home</a></li>
-                             
+
                         </ul>
 
                         <!-- Right Side Of Navbar -->
@@ -117,9 +117,13 @@
                     <div class="panel-body">
 
                         <ul class="list-group">
+                            @if($channels)
                             @foreach($channels as $channel)
                             <li class="list-group-item"><a href="{{route('channel',['slug'=>$channel->slug])}}">{{$channel->title}}</a></li>
                             @endforeach
+                            @else
+                            <li>none</li>
+                            @endif
                         </ul>
 
                     </div>
